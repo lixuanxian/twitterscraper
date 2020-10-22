@@ -33,7 +33,7 @@ RUN GK_VERSION=$(if [ ${GECKODRIVER_VERSION:-latest} = "latest" ]; then echo "0.
   && ln -fs /opt/geckodriver-$GK_VERSION /usr/bin/geckodriver \
   && ln -fs /opt/geckodriver-$GK_VERSION /usr/bin/wires
 # twitterscraper
-RUN apt-get g++ gcc libxslt-dev
+RUN apt-get install g++ gcc libxslt-dev
 COPY . /app
 WORKDIR /app
 RUN python setup.py install

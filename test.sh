@@ -7,4 +7,4 @@
   docker run --rm -it \
    -v ${HOME}/twitterscraper:/app/data \
    twitterscraper:build \
-   twitterscraper Trump --limit 10 --output=tweets.json
+   twitterscraper Trump --limit 1 --javascript --begindate=2020-10-01 --enddate=2020-10-23 --output=tweets.json

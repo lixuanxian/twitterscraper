@@ -80,8 +80,9 @@ def get_ublock():
 
 
 def get_driver(proxy=None, timeout=30):
-    profile = webdriver.FirefoxProfile()
-    profile.set_preference("http.response.timeout", 5)
+    # profile = webdriver.FirefoxProfile("/whatever.selenium")
+    # profile.set_preference("http.response.timeout", 5)
+
 
     seleniumwire_options = {'verify_ssl': False}
     if proxy:
@@ -92,10 +93,13 @@ def get_driver(proxy=None, timeout=30):
         }
 
     opt = Options()
+    # opt.add_argument("-profile")
+    # opt.add_argument("/whatever.selenium")
     opt.headless = True
+    opt.set_preference("http.response.timeout", 5)
 
     driver = webdriver.Firefox(
-        firefox_profile=profile,
+        # firefox_profile=profile,
         options=opt,
         seleniumwire_options=seleniumwire_options
     )
