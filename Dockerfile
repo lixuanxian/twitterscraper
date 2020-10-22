@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.7
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends wget libgtk-3-dev libdbus-glib-1-2 \
@@ -33,7 +33,7 @@ RUN GK_VERSION=$(if [ ${GECKODRIVER_VERSION:-latest} = "latest" ]; then echo "0.
   && ln -fs /opt/geckodriver-$GK_VERSION /usr/bin/geckodriver \
   && ln -fs /opt/geckodriver-$GK_VERSION /usr/bin/wires
 # twitterscraper
-RUN apk add --update --no-cache g++ gcc libxslt-dev
+RUN apt-get g++ gcc libxslt-dev
 COPY . /app
 WORKDIR /app
 RUN python setup.py install
